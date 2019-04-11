@@ -8,7 +8,6 @@
   "author": "Andrew Mead",
   "license": "MIT",
   "scripts": {
-    "serve": "live-server public/",
     "build:dev": "webpack",
     "build:prod": "webpack -p --env production",
     "dev-server": "webpack-dev-server",
@@ -26,14 +25,9 @@
     "babel-loader": "^8.0.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "css-loader": "0.28.4",
-    "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.11.2",
-    "enzyme-to-json": "^3.3.5",
     "express": "^4.16.4",
     "extract-text-webpack-plugin": "^3.0.2",
     "heroku": "^7.22.9",
-    "jest": "^24.5.0",
-    "live-server": "^1.2.1",
     "moment": "^2.24.0",
     "node-gyp": "^3.8.0",
     "node-sass": "^4.11.0",
@@ -46,13 +40,19 @@
     "react-modal": "2.2.2",
     "react-redux": "^6.0.1",
     "react-router-dom": "4.1.2",
-    "react-test-renderer": "^16.8.6",
     "redux": "3.7.2",
     "sass-loader": "6.0.6",
     "style-loader": "0.18.2",
     "uuid": "^3.3.2",
     "validator": "8.0.0",
-    "webpack": "3.1.0",
+    "webpack": "3.1.0"
+  },
+  "devDependencies": {
+    "jest": "^24.5.0",
+    "react-test-renderer": "^16.8.6",
+    "enzyme": "^3.9.0",
+    "enzyme-to-json": "^3.3.5",
+    "enzyme-adapter-react-16": "^1.11.2",
     "webpack-dev-server": "2.5.1"
   }
 }
