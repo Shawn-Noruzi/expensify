@@ -18,18 +18,37 @@ const config = {
 firebase.initializeApp(config);
 const database = firebase.database();
 
-database.ref().on(
-  "value",
-  snapshot => {
-    const data = snapshot.val();
-    console.log(`${data.name} is a ${data.job.title} at ${data.job.company}`);
-  },
-  e => {
-    console.log("fetch failed", e);
-  }
-);
+database.ref("expenses").push({
+  description: "Bill 1",
+  note: "this is a note",
+  amount: "$45.69",
+  createdAt: "june 25th 2019"
+});
 
-database.ref("job/company").set("bellapizza");
+database.ref("expenses").push({
+  description: "Bill 2",
+  note: "this is another note",
+  amount: "$4511.69",
+  createdAt: "june 26th 2019"
+});
+
+//database.ref('notes').push({
+// title: 'topics',
+// body: 'i did my hwk'
+// });
+
+// database.ref().on(
+//   "value",
+//   snapshot => {
+//     const data = snapshot.val();
+//     console.log(`${data.name} is a ${data.job.title} at ${data.job.company}`);
+//   },
+//   e => {
+//     console.log("fetch failed", e);
+//   }
+// );
+
+// database.ref("job/company").set("bellapizza");
 
 ////Setting up a subscription/turning it off
 // const onValueChange = database.ref().on('value', (snapshot) => {
