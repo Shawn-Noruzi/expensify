@@ -18,19 +18,50 @@ const config = {
 firebase.initializeApp(config);
 const database = firebase.database();
 
-database.ref("expenses").push({
-  description: "Bill 1",
-  note: "this is a note",
-  amount: "$45.69",
-  createdAt: "june 25th 2019"
+//child_removed
+database.ref("expenses").on("child_removed", snapshot => {
+  console.log("child removed");
+  console.log(snapshot.key, snapshot.val());
 });
 
-database.ref("expenses").push({
-  description: "Bill 2",
-  note: "this is another note",
-  amount: "$4511.69",
-  createdAt: "june 26th 2019"
+//child_changed
+database.ref("expenses").on("child_changed", snapshot => {
+  console.log("child edited");
+  console.log(snapshot.key, snapshot.val());
 });
+
+//child_added
+database.ref("expenses").on("child_added", snapshot => {
+  console.log("child added");
+  console.log(snapshot.key, snapshot.val());
+});
+
+//// subscription to array changes
+// database.ref("expenses").on("value", snapshot => {
+//   const expenses = [];
+//   snapshot.forEach(childSnapshot => {
+//     expenses.push({
+//       id: childSnapshot.key,
+//       ...childSnapshot.val()
+//     });
+//   });
+//   console.log(expenses);
+// });
+
+//// creating an array + pushing data into the array in FB
+// database.ref("expenses").push({
+//   description: "Bill 1",
+//   note: "this is a note",
+//   amount: "$45.69",
+//   createdAt: "june 25th 2019"
+// });
+
+// database.ref("expenses").push({
+//   description: "Bill 2",
+//   note: "this is another note",
+//   amount: "$4511.69",
+//   createdAt: "june 26th 2019"
+// });
 
 //database.ref('notes').push({
 // title: 'topics',
@@ -61,7 +92,7 @@ database.ref("expenses").push({
 //     database.ref('age').set('46');
 // }, 700);
 
-// ///unsubs
+//// unsubs
 // setTimeout(() => {
 //     database.ref().off('value', onValueChange);
 // }, 1400);
