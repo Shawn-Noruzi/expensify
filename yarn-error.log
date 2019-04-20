@@ -1,0 +1,84 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\shawn\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add firebase
+
+PATH: 
+  C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NGX;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;C:\Users\shawn\.windows-build-tools\python27\;C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;C:\Users\shawn\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\Users\shawn\AppData\Roaming\npm\node_modules\.bin;C:\Users\shawn\AppData\Local\Microsoft\WindowsApps;C:\Users\shawn\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\nodejs;C:\Users\shawn\AppData\Roaming\npm\node_modules\yarn\bin;C:\Program Files\heroku\bin
+
+Yarn version: 
+  1.13.0
+
+Node version: 
+  10.15.3
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'C:\Users\shawn\Documents\Github\expensify\node_modules\http-auth\node_modules\.bin'
+
+npm manifest: 
+  {
+    "name": "expensify",
+    "version": "1.0.0",
+    "engines": {
+      "yarn": "1.x"
+    },
+    "main": "index.js",
+    "author": "Andrew Mead",
+    "license": "MIT",
+    "scripts": {
+      "build:dev": "webpack",
+      "build:prod": "webpack -p --env production",
+      "dev-server": "webpack-dev-server",
+      "test": "jest --config=jest.config.json",
+      "start": "node server/server.js",
+      "heroku-postbuild": "yarn run build:prod"
+    },
+    "dependencies": {
+      "@babel/cli": "^7.0.0",
+      "@babel/core": "^7.4.0",
+      "@babel/plugin-proposal-class-properties": "^7.0.0",
+      "@babel/plugin-proposal-object-rest-spread": "^7.4.0",
+      "@babel/preset-env": "^7.0.0",
+      "@babel/preset-react": "^7.0.0",
+      "babel-loader": "^8.0.0",
+      "babel-plugin-transform-class-properties": "^6.24.1",
+      "css-loader": "0.28.4",
+      "express": "^4.16.4",
+      "extract-text-webpack-plugin": "^3.0.2",
+      "heroku": "^7.22.9",
+      "moment": "^2.24.0",
+      "node-gyp": "^3.8.0",
+      "node-sass": "^4.11.0",
+      "normalize.css": "7.0.0",
+      "numeral": "^2.0.6",
+      "raf": "^3.4.1",
+      "react": "^16.8.5",
+      "react-addons-shallow-compare": "^15.6.2",
+      "react-dates": "^20.1.0",
+      "react-dom": "^16.8.5",
+      "react-modal": "2.2.2",
+      "react-redux": "^6.0.1",
+      "react-router-dom": "4.1.2",
+      "redux": "3.7.2",
+      "sass-loader": "6.0.6",
+      "style-loader": "0.18.2",
+      "uuid": "^3.3.2",
+      "validator": "8.0.0",
+      "webpack": "3.1.0"
+    },
+    "devDependencies": {
+      "jest": "^24.5.0",
+      "react-test-renderer": "^16.8.6",
+      "enzyme": "^3.9.0",
+      "enzyme-to-json": "^3.3.5",
+      "enzyme-adapter-react-16": "^1.11.2",
+      "webpack-dev-server": "2.5.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
