@@ -1,10 +1,10 @@
 // Firebase App (the core Firebase SDK) is always required and
 // must be listed before other Firebase SDKs
-import * as firebase from "firebase/app";
+import * as firebase from 'firebase';
+
+
 
 // Add the Firebase services that you want to use
-import "firebase/auth";
-import "firebase/database";
 
 const config = {
   apiKey: "AIzaSyCylMs8RB5Qq2C5wJyCdOZ1srqiAWktKsE",
@@ -15,26 +15,30 @@ const config = {
   messagingSenderId: "160049049295"
 };
 
+
 firebase.initializeApp(config);
+
 const database = firebase.database();
 
-//child_removed
-database.ref("expenses").on("child_removed", snapshot => {
-  console.log("child removed");
-  console.log(snapshot.key, snapshot.val());
-});
+export { firebase, database as default };
 
-//child_changed
-database.ref("expenses").on("child_changed", snapshot => {
-  console.log("child edited");
-  console.log(snapshot.key, snapshot.val());
-});
+// //child_removed
+// database.ref("expenses").on("child_removed", snapshot => {
+//   console.log("child removed");
+//   console.log(snapshot.key, snapshot.val());
+// });
 
-//child_added
-database.ref("expenses").on("child_added", snapshot => {
-  console.log("child added");
-  console.log(snapshot.key, snapshot.val());
-});
+// //child_changed
+// database.ref("expenses").on("child_changed", snapshot => {
+//   console.log("child edited");
+//   console.log(snapshot.key, snapshot.val());
+// });
+
+// //child_added
+// database.ref("expenses").on("child_added", snapshot => {
+//   console.log("child added");
+//   console.log(snapshot.key, snapshot.val());
+// });
 
 //// subscription to array changes
 // database.ref("expenses").on("value", snapshot => {
