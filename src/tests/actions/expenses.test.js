@@ -7,6 +7,7 @@ import {
   removeExpense
 } from "../../actions/expenses";
 import expenses from "../fixtures/expenses";
+import database from "../../firebase/firebase";
 
 const createMockStore = configureMockStore([thunk]);
 
@@ -34,7 +35,7 @@ test("addExpense -  correct new values", () => {
   });
 });
 
-test("should add expense to db and redux store", (done) => {
+test("should add expense to db and redux store", done => {
   //how to create a fake redux store for testing
   const store = createMockStore({});
   const expenseData = {
@@ -42,22 +43,55 @@ test("should add expense to db and redux store", (done) => {
     amount: 444,
     note: " no notes ",
     createdAt: 1000
-  };  
-  store.dispatch(startAddExpense(expenseData)).then(() => {
-    const actions = store.getActions();
-    expect(actions[0]).toEqual({
-        type: 'ADD_EXPENSE',
+  };
+  store
+    .dispatch(startAddExpense(expenseData))
+    .then(() => {
+      const actions = store.getActions();
+      expect(actions[0]).toEqual({
+        type: "ADD_EXPENSE",
         expense: {
-            id: expect.any(String),
-            ...expenseData
+          id: expect.any(String),
+          ...expenseData
         }
+      });
+      return database.ref(`expenses/${actions[0].expense.id}`).once("value");
     })
-    //forces jest to wait until this moment - why? because its not asynchronous unless we tell jest to be.
-    done();
-  });
+    .then(snapshot => {
+      expect(snapshot.val()).toEqual(expenseData);
+      //forces jest to wait until this moment - why? because its not asynchronous unless we tell jest to be.
+      done();
+    });
 });
 
-test("should add expense with defaults to db and redux store", () => {});
+test("should add expense with defaults to db and redux store", done => {
+  //how to create a fake redux store for testing
+  const store = createMockStore({});
+  const expenseDefaults = {
+    description : '',
+    note : '',
+    amount : 0,
+    createdAt : 0
+  };
+  store
+    .dispatch(startAddExpense({}))
+    .then(() => {
+      const actions = store.getActions();
+      expect(actions[0]).toEqual({
+        type: "ADD_EXPENSE",
+        expense: {
+          id: expect.any(String),
+...expenseDefaults
+        }
+      });
+      return database.ref(`expenses/${actions[0].expense.id}`).once("value");
+    })
+    .then(snapshot => {
+      expect(snapshot.val()).toEqual(expenseDefaults);
+      //forces jest to wait until this moment - why? because its not asynchronous unless we tell jest to be.
+      done();
+    });
+});
 
 // test("addExpense - correct default values", () => {
 //   const action = addExpense();
