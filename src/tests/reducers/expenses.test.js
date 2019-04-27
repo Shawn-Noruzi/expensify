@@ -17,54 +17,62 @@ test("should remove expense by ID", () => {
 });
 
 test("should not remove expenses if ID not found", () => {
-    const action = {
-      type: "REMOVE_EXPENSE",
-      id: -1
-    };
-  
-    const state = expensesReducer(expenses, action);
-    expect(state).toEqual(expenses);
-  });
-  
+  const action = {
+    type: "REMOVE_EXPENSE",
+    id: -1
+  };
 
-  test("should add an expense", () => {
-    const expense = {
-      id: 4,
-      description: 'new expense',
-      note: '',
-      amount: 100,
-      createdAt : 0
-    };
-  
-    const action = {
-        type: 'ADD_EXPENSE',
-        expense
-    };
-    const state = expensesReducer(expenses, action);
-    expect(state).toEqual([...expenses, expense]);
-  });
+  const state = expensesReducer(expenses, action);
+  expect(state).toEqual(expenses);
+});
 
-  test("should edit an expense", () => {
-    const description = 'updated rent';
-  
-    const action = {
-        type: 'EDIT_EXPENSE',
-        id: expenses[1].id,
-        updates : {
-            description
-        }
-    };
-    const state = expensesReducer(expenses, action);
-    expect(state[1].description).toBe('updated rent');
-  });
+test("should add an expense", () => {
+  const expense = {
+    id: 4,
+    description: "new expense",
+    note: "",
+    amount: 100,
+    createdAt: 0
+  };
 
-  test("should not edit an expense if ID not found", () => {
+  const action = {
+    type: "ADD_EXPENSE",
+    expense
+  };
+  const state = expensesReducer(expenses, action);
+  expect(state).toEqual([...expenses, expense]);
+});
 
-  
-    const action = {
-        type: 'EDIT_EXPENSE',
-        id: -1
-    };
-    const state = expensesReducer(expenses, action);
-    expect(state).toEqual(expenses);
-  });
+test("should edit an expense", () => {
+  const description = "updated rent";
+
+  const action = {
+    type: "EDIT_EXPENSE",
+    id: expenses[1].id,
+    updates: {
+      description
+    }
+  };
+  const state = expensesReducer(expenses, action);
+  expect(state[1].description).toBe("updated rent");
+});
+
+test("should not edit an expense if ID not found", () => {
+  const action = {
+    type: "EDIT_EXPENSE",
+    id: -1
+  };
+  const state = expensesReducer(expenses, action);
+  expect(state).toEqual(expenses);
+});
+
+test("should set expenses", () => {
+  const action = {
+    type: "SET_EXPENSES",
+    expenses: [expenses[1]]
+  };
+
+  const state = expensesReducer(expenses, action);
+  expect(state).toEqual([expenses[1]]);
+
+});
