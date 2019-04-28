@@ -37,6 +37,18 @@ export const removeExpense = ({ id } = {}) => ({
   id
 });
 
+//async function so we use return inside -> then calls another function (ie. removeExpense)
+export const startRemoveExpense = ({ id } = {}) => {
+  return dispatch => {
+    return database
+      .ref(`expenses/${id}`)
+      .remove()
+      .then(() => {
+        dispatch(removeExpense({ id }));
+      });
+  };
+};
+
 // EDIT_EXPENSE
 export const editExpense = (id, updates) => ({
   type: "EDIT_EXPENSE",
@@ -57,19 +69,21 @@ export const setExpenses = expenses => ({
 //3.Dispatch SET_EXPENSES
 
 export const startSetExpenses = () => {
-  return (dispatch) => {
-    return database.ref('expenses').once('value').then((snapshot) => {
-      const expenses = [];
+  return dispatch => {
+    return database
+      .ref("expenses")
+      .once("value")
+      .then(snapshot => {
+        const expenses = [];
 
-      snapshot.forEach((childSnapshot) => {
-        expenses.push({
-          id: childSnapshot.key,
-          ...childSnapshot.val()
+        snapshot.forEach(childSnapshot => {
+          expenses.push({
+            id: childSnapshot.key,
+            ...childSnapshot.val()
+          });
         });
-      });
 
-      dispatch(setExpenses(expenses));
-    });
+        dispatch(setExpenses(expenses));
+      });
   };
 };
-
