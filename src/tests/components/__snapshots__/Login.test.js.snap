@@ -3,7 +3,7 @@
 exports[`should render the Login page correctly 1`] = `
 <div>
   <button>
-     Login 
+    Login
   </button>
 </div>
 `;

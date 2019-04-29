@@ -12,7 +12,6 @@ import NotFoundPage from "./../components/NotFound";
 const AppRouter = () => (
     <BrowserRouter>
         <div>
-
             <Header />
             <Switch>
                 <Route path="/" component={LoginPage} exact={true} />
