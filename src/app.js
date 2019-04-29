@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import AppRouter, { history } from "./routers/AppRouter";
 import configureStore from "./store/configureStore";
 import { startSetExpenses } from "./actions/expenses";
-import { setTextFilter } from "./actions/filters";
+import { login, logout } from "./actions/auth";
 import getVisibleExpenses from "./selectors/expenses";
 import "normalize.css/normalize.css";
 import "./styles/styles.scss";
@@ -22,30 +22,30 @@ const jsx = (
 
 ReactDOM.render(<p>Loading...</p>, document.getElementById("app"));
 
-
-//if user logs in -> fetch data 
-//only want to redirect if they're on login page - not any other page. 
-
+//if user logs in -> fetch data
+//only want to redirect if they're on login page - not any other page.
 
 let hasRendered = false;
 const renderApp = () => {
-  if (!hasRendered){
+  if (!hasRendered) {
     ReactDOM.render(jsx, document.getElementById("app"));
     hasRendered = true;
   }
-}
+};
 
 //to check if logins are working. returns boolean of user.
-firebase.auth().onAuthStateChanged(user => {
+firebase.auth().onAuthStateChanged((user) => {
   if (user) {
+    store.dispatch(login(user.uid));
     store.dispatch(startSetExpenses()).then(() => {
       renderApp();
-      if (history.location.pathname === '/'){
-        history.push('/dashboard')
+      if (history.location.pathname === '/') {
+        history.push('/dashboard');
       }
     });
   } else {
+    store.dispatch(logout());
     renderApp();
-    history.push("/");
+    history.push('/');
   }
 });
