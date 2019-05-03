@@ -1,0 +1,28 @@
+.box-layout {
+  //set a BG image in /public/images that covers the whole page
+  background: url("/images/bg.jpg");
+  background-size: cover;
+
+  //positioning of elements in the center of the page
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  //setting the size of the entire div -> 100% of the viewport height and width
+  height: 100vh;
+  width: 100vw;
+}
+
+.box-layout__box {
+  background: fade-out($color: rgb(190, 185, 185), $amount: 0.2);
+  border-radius: 3px;
+  text-align: center;
+  width: 25rem;
+}
+
+.box-layout__title {
+  margin: $s-size 0 0 0 ;
+  line-height: 1;
+  padding: $m-size;
+}
+
