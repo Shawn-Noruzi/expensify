@@ -1,7 +1,10 @@
+//buttons styling for create/add/edit/remove here
+
 .button {
     background: rgb(22, 145, 182);
     color: white;
     border-radius: 4px;
+    display:inline-block;
     border: none;
     text-align: center;
     padding: 20px;
@@ -36,3 +39,26 @@
     right: 0;
   }
   
+//logout button here
+
+.button--logout {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: $m-size;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+
+}
+
+.button--logout:hover {background-color: #3e8e41}
+
+.button--logout:active {
+  background-color: #3e8e41;
+  transform: translateY(4px);
+}
