@@ -1,0 +1,15 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    //selection for children of a tag ie.items under form
+    > * {
+        margin-bottom: $m-size;
+    }
+}
+
+
+
+.form__error {
+    margin: 0 0 $m-size 0;
+    font-style: italic;
+}

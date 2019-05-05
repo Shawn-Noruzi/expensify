@@ -11,7 +11,7 @@
     transition: all 0.5s;
     cursor: pointer;
     margin-top: $s-size;
-    margin-bottom: $l-size;
+    margin-bottom: $s-size;
     font-size: $m-size;
   }
   .button span {
@@ -61,4 +61,9 @@
 .button--logout:active {
   background-color: #3e8e41;
   transform: translateY(4px);
+}
+
+.button--secondary { 
+  background: #888888; 
+  margin-top: 0 !important;
 }
