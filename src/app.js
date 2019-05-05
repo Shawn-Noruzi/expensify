@@ -11,6 +11,7 @@ import "./styles/styles.scss";
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
 import { firebase } from "./firebase/firebase";
+import LoadingPage from './components/LoadingPage';
 
 const store = configureStore();
 
@@ -20,7 +21,7 @@ const jsx = (
   </Provider>
 );
 
-ReactDOM.render(<p>Loading...</p>, document.getElementById("app"));
+ReactDOM.render(<LoadingPage/>, document.getElementById("app"));
 
 //if user logs in -> fetch data
 //only want to redirect if they're on login page - not any other page.
