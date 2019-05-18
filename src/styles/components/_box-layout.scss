@@ -5,6 +5,7 @@
 
   //positioning of elements in the center of the page
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
@@ -14,15 +15,27 @@
 }
 
 .box-layout__box {
-  background: fade-out($color: rgb(190, 185, 185), $amount: 0.2);
-  border-radius: 3px;
+  background: fade-out($color: rgb(255, 255, 255), $amount: 0.5);
+  border-radius: 4px;
   text-align: center;
-  width: 25rem;
+  width: 30rem;
+  margin: $m-size;
+  padding: $m-size;
 }
 
 .box-layout__title {
   margin: $s-size 0 0 0 ;
   line-height: 1;
   padding: $m-size;
+  color: white;
+}
+
+.box-layout__paragraph {
+  margin: $s-size 0 0 0 ;
+  line-height: 1;
+  padding: $s-size;
+  font-size: 2 rem;
+  color: white;
+  text-align: start;
 }
 
