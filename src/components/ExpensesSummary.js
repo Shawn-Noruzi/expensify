@@ -8,7 +8,7 @@ import selectExpensesTotal from "../selectors/expenses-total";
 //expenseCount - how many visisble expenses
 //expensesTotal - total of visible expenses?
 //2 snapshot tests
-//sfc used here because we dont want this component to be able to
+//stateless functional component used here because we dont want this component to be able to
 //change the state.
 
 export const ExpensesSummary = ({ expenseCount, expensesTotal }) => {
